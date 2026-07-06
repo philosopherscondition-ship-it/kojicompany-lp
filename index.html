@@ -155,8 +155,10 @@
     box-shadow: 0 18px 40px rgba(0,0,0,.35);
   }
 
+  .noren-panel { white-space: nowrap; }
   .noren-panel:nth-child(2) { animation-delay: .14s; padding-top: 72px; }
   .noren-panel:nth-child(3) { animation-delay: .28s; padding-top: 104px; }
+  .noren-panel:nth-child(4) { animation-delay: .42s; padding-top: 136px; }
 
   .noren-panel .shu-char { color: #E5674C; }
 
@@ -729,21 +731,34 @@
     max-width: 800px;
   }
 
+  /* 将棋駒の紋（参謀の「参」） */
   .profile-mon {
     flex-shrink: 0;
-    width: 116px;
-    height: 116px;
-    border-radius: 50%;
-    background: radial-gradient(circle at 38% 30%, #24466F, var(--koiai));
-    color: var(--kinari);
-    font-family: var(--font-display);
-    font-weight: 800;
-    font-size: 42px;
+    position: relative;
+    width: 112px;
+    height: 128px;
+    clip-path: polygon(50% 0%, 84% 13%, 98% 100%, 2% 100%, 16% 13%);
+    background: linear-gradient(180deg, #C8A96E, #8A6D3B);
     display: flex;
     align-items: center;
     justify-content: center;
-    border: 3px double var(--kifuda);
-    box-shadow: 0 10px 26px rgba(18,35,60,.3);
+  }
+
+  .profile-mon::before {
+    content: "";
+    position: absolute;
+    inset: 5px;
+    clip-path: polygon(50% 0%, 84% 13%, 98% 100%, 2% 100%, 16% 13%);
+    background: radial-gradient(circle at 38% 26%, #24466F, var(--koiai));
+  }
+
+  .profile-mon span {
+    position: relative;
+    font-family: var(--font-display);
+    font-weight: 800;
+    font-size: 54px;
+    color: var(--kinari);
+    transform: translateY(10px);
   }
 
   .profile-body h3 {
@@ -907,9 +922,10 @@
   @media (max-width: 860px) {
     .hero-main { flex-direction: column; align-items: flex-start; gap: 48px; padding: 48px 0 60px; }
     .noren { align-self: center; }
-    .noren-panel { font-size: clamp(38px, 11vw, 58px); padding: 28px 14px 36px; }
-    .noren-panel:nth-child(2) { padding-top: 50px; }
-    .noren-panel:nth-child(3) { padding-top: 72px; }
+    .noren-panel { font-size: clamp(34px, 9vw, 54px); padding: 24px 12px 32px; }
+    .noren-panel:nth-child(2) { padding-top: 44px; }
+    .noren-panel:nth-child(3) { padding-top: 64px; }
+    .noren-panel:nth-child(4) { padding-top: 84px; }
     .pains, .ticket-grid, .ticket-grid.cols3 { grid-template-columns: 1fr; }
     .daifuku-row { grid-template-columns: 1fr; gap: 6px; padding: 20px 24px; }
     .daifuku-head { padding: 18px 24px; }
@@ -948,7 +964,8 @@
       <div class="noren" aria-hidden="true">
         <div class="noren-panel">現場は、</div>
         <div class="noren-panel">あなた。</div>
-        <div class="noren-panel">数字は、<span class="shu-char">こちら。</span></div>
+        <div class="noren-panel">数字は、</div>
+        <div class="noren-panel"><span class="shu-char">こちら。</span></div>
       </div>
       <div class="hero-copy">
         <p class="eyebrow">― 中小・個人店の、外部経営参謀。</p>
@@ -1082,8 +1099,8 @@
       <div class="strength reveal">
         <div class="s-step"><span class="s-num">参</span><span class="s-rule"></span></div>
         <h3>自動化構築</h3>
-        <p>改善した業務は、AIで仕組み化して手離れさせます。「レシート写真→売上分析」「録音→議事録」のような自動化を、あなたの店仕様に構築して運用まで面倒を見ます。</p>
-        <span class="s-plan">標準顧問＋SNS代行プランで対応</span>
+        <p>改善した業務は、AIで仕組み化して手離れさせます。「レシート写真→売上分析」「録音→議事録」のような自動化を、あなたの店仕様に構築して運用まで面倒を見ます。数字が固まったら、それを客に届ける販促POP・メニュー表の制作まで一気通貫で。</p>
+        <span class="s-plan">標準顧問＋SNS代行＋販促POPプランで対応</span>
       </div>
     </div>
   </div>
@@ -1133,21 +1150,21 @@
           <p class="t-cat">月イチで整えたい方へ</p>
           <h3>ライト顧問</h3>
           <p class="t-desc">月次の数字レポート＋月1回のオンライン面談＋チャット相談。「数字を見てくれている人がいる」状態を作ります。</p>
-          <p class="t-price"><small>月額</small>¥40,000</p>
+          <p class="t-price"><small>月額</small>¥50,000</p>
         </a>
         <a class="ticket" href="#renraku">
           <span class="ticket-lamp lamp-honmei">外部参謀</span>
           <p class="t-cat">本気で変えたい方へ</p>
           <h3>標準顧問</h3>
           <p class="t-desc">週次で数字を追い、値付け・商品構成・販促の判断を数字で支え、施策の立案から実行まで伴走します。</p>
-          <p class="t-price"><small>月額</small>¥80,000</p>
+          <p class="t-price"><small>月額</small>¥100,000</p>
         </a>
         <a class="ticket" href="#renraku">
           <span class="ticket-lamp lamp-honmei">自動化構築込み</span>
           <p class="t-cat">全部任せたい方へ</p>
-          <h3>標準顧問＋SNS代行</h3>
-          <p class="t-desc">標準顧問のすべてに加え、SNSの企画・投稿・運用を代行。さらに「レシート写真→売上分析」のようなAI自動化を、あなたの店仕様に構築します。</p>
-          <p class="t-price"><small>月額</small>¥120,000</p>
+          <h3>標準顧問＋SNS代行＋販促POP</h3>
+          <p class="t-desc">標準顧問のすべてに、SNSの企画・投稿・運用の代行、店頭の販促POP・メニュー表の制作、AI自動化の構築まで。数字も発信も売場づくりも、丸ごとこちらで。</p>
+          <p class="t-price"><small>月額</small>¥150,000</p>
         </a>
       </div>
 
@@ -1195,7 +1212,7 @@
       <h2 class="sec-label">数字と現場とAI、三つの持ち場から</h2>
     </div>
     <div class="profile-card reveal">
-      <div class="profile-mon" aria-hidden="true">麹</div>
+      <div class="profile-mon" aria-hidden="true"><span>参</span></div>
       <div class="profile-body">
         <h3>Yasu Koji</h3>
         <p class="p-sub">kojiCOMPANY ／ 中小・個人店の外部経営参謀</p>
@@ -1232,7 +1249,11 @@
       </details>
       <details>
         <summary>業務の自動化も、お願いできますか</summary>
-        <p class="faq-a">はい。標準顧問＋SNS代行プランで、実績欄にある「レシート写真→売上分析」「録音→議事録」のような自動化を、あなたの店仕様に構築して運用まで面倒を見ます。あなたが新しいツールの操作を覚える必要はありません。</p>
+        <p class="faq-a">はい。最上位プラン（標準顧問＋SNS代行＋販促POP）で、実績欄にある「レシート写真→売上分析」「録音→議事録」のような自動化を、あなたの店仕様に構築して運用まで面倒を見ます。あなたが新しいツールの操作を覚える必要はありません。</p>
+      </details>
+      <details>
+        <summary>販促POPやメニュー表も、作ってもらえますか</summary>
+        <p class="faq-a">はい。最上位プランに含まれます。「数字で決めた売りたい商品」をそのまま店頭で推せるよう、POP・メニュー表・卓上案内などの制作までやります。分析と売場が直結するのが、デザイン会社に単発で頼む場合との違いです。</p>
       </details>
       <details>
         <summary>売上は上がりますか</summary>
@@ -1252,7 +1273,7 @@
 <footer class="footer-cta" id="renraku">
   <section>
     <div class="wrap">
-      <h2 class="f-title">まずは無料の一杯<span class="shu-char">か</span>ら。</h2>
+      <h2 class="f-title">まずは<span class="shu-char">無料</span>の一杯から。</h2>
       <p class="f-lede">記事を読んで、要らなければそれで終わりで構いません。中小・個人店の経営に日々関わる立場として、誇張なしで書いています。</p>
       <div class="footer-links">
         <a class="primary" href="mailto:philosophers.condition@gmail.com">メールで相談する</a>
